@@ -20,7 +20,7 @@
        
                                 D(xi, xj) = [(sum from i=1 to k * (xi - xj)^2)]^1/2
        
-       Where xi and xj are the initially-labeled sample and the new sample, respectively, and  and k is the nearest neighbor to the new training sample.
+       Where xi and xj are the initially-labeled/input sample and the new sample, respectively, and k is the nearest neighbor to the new sample.
                                       
        KNN is non-parametric because there is no assumption about the data fits any sort of parameterized distribution. KNN is a popular algorithm to use 
        for machine learning because it is simple and because the training time is very quick, due to the method being a lazy algorithm. 
@@ -33,6 +33,19 @@
        Another disadvantage is that because KNN does not learn on the training set, it is not able to predict upon any newly-introduced data. 
        In addition, the training data This is why choosing a large enough value of k is important, because it will mitigate the noise. 
        But this may lead to the model undefitting the data, if the k is too big. If the k is too small, 
+       
+       The following is a simple flow chart of the classification process by KNN. It is based off Fig. 4 of the paper by Al-Faiz and Miry
+       (http://dx.doi.org/10.5772/48531)
+       
+                                           select and define k 
+                                                    v
+                                                    v
+                         compute the Euclidean distance between the initial and new samples
+                                                    v
+                                                    v
+                                             sort the distances 
+          -> select the k nearest neighbors to the new sample -> 
+                                             
        
        There are a number of improvements that have been proposed and implemented to make KNN These improvements include  
        
