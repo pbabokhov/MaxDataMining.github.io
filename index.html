@@ -10,9 +10,14 @@
       <li><a href="updates.html">Weekly Updates</a></li>
       <li>Problem Description</li>
       <li>Method Discussion</li>
-       K-Nearest Neighbors, or KNN, is a supervised non-parametric lazy algorithm, first proposed by Evelyn Fix and J.L. Hodges in 1951 and improved upon by Thomas Cover in 1968. 
-       The basic premise of KNN is that 
+       K-Nearest Neighbors, or KNN, is a supervised non-parametric lazy algorithm, first proposed by Evelyn Fix and J.L. Hodges in 1951 
+       and improved upon by Thomas Cover in 1968. The basic premise of KNN is that 
        
+       The most common measurement for KNN is Euclidean Distance. The math formula is given below:
+       
+                                D(xi, xj) = square root(sum from i=1 to k * (xik - xjk)^2)
+       
+       Where xi and xj are two training samples and k is the nearest neighbor to each training sample.
                                       
        KNN is non-parametric because there is no assumption about the data fits any sort of parameterized distribution. KNN is a popular algorithm to use 
        for machine learning because it is simple and because the training time is very quick, due to the method being a lazy algorithm. 
@@ -20,8 +25,9 @@
        This is good for cases when the distribution of the data is unknown, or in experiments when a quick classification is needed. 
        
        The status of KNN as a lazy algorithm also comes with disadvantages. One disadvantage is the calculation complexity. This stems from 
-       KNN's retention of all the training data until testing. If there is a lot of data, the calculations of similarity between the training
-       and test sets will take a long time. 
+       KNN's retention of all the training data until testing. The algorithm calculates the distance between every sample within the training set
+       This means that if there is a lot of data, the calculations of similarity between two training samples will take a long time. 
+       Another disadvantage is that because KNN does not learn on the training set, it is not able to predict upon any newly-introduced data. This is why choosing a large enough value of k is important
       
       <li>Code</li>
     </ul>
