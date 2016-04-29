@@ -14,7 +14,7 @@
        The basic premise of KNN is that there is an initial data point/sample, and we want to find a new sample. 
        In this case, we calculate the k nearest neighbors (with k being a positive number). Thus, if k=1, then the 
        new point is assigned to the single closest neighbor. If k=2, the sample is assigned to the two closest neighbors, and so on.
-       KNN can be used for both classification and regression.
+       KNN can be used for both classification and regression. For classification, 
        
        The most common measurement for KNN is Euclidean Distance. The math formula is given below:
        
@@ -34,7 +34,8 @@
        In addition, the model would not be able to handle noisy data too well. This is why choosing a large enough value of k is important, 
        because it will mitigate the effect of noise upon data. This may lead to the model undefitting the data (little similarity between training
        samples and predicted outcome), if the k is too big. If the k is too small, the result could be an overfit of the data, 
-       meaning that the model cannot learn on any new data introduced.
+       meaning that the model cannot learn on any new data introduced. Lastly, the concept of majority voting results in the most frequently-found
+       attributes dominating the model at each new iteration. And these attributes would not always be relevant to the problem at hand.
        
        The following is a simple flow chart of the classification process by KNN. It is based off Fig. 4 of the paper by Al-Faiz and Miry
        (http://dx.doi.org/10.5772/48531)
@@ -59,7 +60,9 @@
                                               end of iteration
                                              
        
-       There are a number of improvements that have been proposed and implemented to make KNN These improvements include  
+       There are a number of improvements that have been proposed and implemented to make KNN more efficient. 
+       One way is to filter out any irrelevant and noisy attributes during distance calculation. This is done via wrapper methods (searching each feature set for a good subset), 
+       genetic algorithms (which mimic the process of evolution by natural selection), or by weighting each attribute differently (Jiang et. al.). 
        
        The following is an example of the pseudocode used for the combination of KNN and genetic algortims, from Suguna and Thanushkodi (2010).
        
