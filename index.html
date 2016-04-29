@@ -11,8 +11,8 @@
       <li>Problem Description</li>
       <li>Method Discussion</li>
        K-Nearest Neighbors, or KNN, is a supervised non-parametric lazy algorithm, first proposed by Evelyn Fix and J.L. Hodges in 1951 
-       and improved upon by Thomas Cover in 1968. The basic premise of KNN is that there is an initial data point/sample, and we want
-       to find a new sample. In this case, we calculate the k nearest neighbors (with k being a positive number). Thus, if k=1, then the 
+       The basic premise of KNN is that there is an initial data point/sample, and we want to find a new sample. 
+       In this case, we calculate the k nearest neighbors (with k being a positive number). Thus, if k=1, then the 
        new point is assigned to the single closest neighbor. If k=2, the sample is assigned to the two closest neighbors, and so on.
        KNN can be used for both classification and regression.
        
@@ -24,16 +24,17 @@
                                       
        KNN is non-parametric because there is no assumption about the data fits any sort of parameterized distribution. KNN is a popular algorithm to use 
        for machine learning because it is simple and because the training time is very quick, due to the method being a lazy algorithm. 
-       That is, all the data is stored during the training phase, but the algorithm does not learn on the data until after classification. 
+       That is, all the data is stored during the training phase, but the algorithm does not learn on the data until it needs to be classified. 
        This is good for cases when the distribution of the data is unknown, or in experiments when a quick classification is needed. 
        
        The status of KNN as a lazy algorithm also comes with disadvantages. One disadvantage is the calculation complexity. This stems from 
        KNN's retention of all the training data until testing. The algorithm calculates the distance between every sample within the training set
        This means that if there is a lot of data, the calculations of similarity between two training samples will take a long time. 
-       Another disadvantage is that because KNN does not learn on the training set, it is not able to predict upon any newly-introduced data. 
+       Another disadvantage is that because KNN does not learn on the training set, it is less able to predict upon any newly-introduced data. 
        In addition, the model would not be able to handle noisy data too well. This is why choosing a large enough value of k is important, 
-       because it will mitigate the effect of noise upon data. This may lead to the model undefitting the data, if the k is too big. 
-       If the k is too small, the result could be an overfit of the data.
+       because it will mitigate the effect of noise upon data. This may lead to the model undefitting the data (little similarity between training
+       samples and predicted outcome), if the k is too big. If the k is too small, the result could be an overfit of the data, 
+       meaning that the model cannot learn on any new data introduced.
        
        The following is a simple flow chart of the classification process by KNN. It is based off Fig. 4 of the paper by Al-Faiz and Miry
        (http://dx.doi.org/10.5772/48531)
@@ -59,6 +60,23 @@
                                              
        
        There are a number of improvements that have been proposed and implemented to make KNN These improvements include  
+       
+       The following is an example of the pseudocode used for the combination of KNN and genetic algortims, from Suguna and Thanushkodi (2010).
+       
+          1. Choose k number of samples from the training set to generate initial population (p1).
+          2. Calculate the distance between training samples in each chromosome and testing samples, as fitness value.
+          3. Choose the chromosome with highest fitness value as global maximum (Gmax).
+              a. For i = 1 to L do
+                  i. Perform reproduction
+                  ii. Apply the crossover operator.
+                  iii. Perform mutation and get the new population. (p2)
+                  iv. Calculate the local maximum (Lmax).
+                  v. If Gmax < Lmax then
+                        a. Gmax = Lmax;
+                        b. p1 = p2;
+              b. Repeat
+          4. Output – the chromosome which obtains Gmax has the optimum K-neighbors and the corresponding 
+             labels are the classification results.
        
        
       
