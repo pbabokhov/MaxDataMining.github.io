@@ -25,7 +25,7 @@
        KNN is non-parametric because there is no assumption about the data fits any sort of parameterized distribution. KNN is a popular algorithm to use 
        for machine learning because it is simple and because the training time is very quick, due to the method being a lazy algorithm. 
        That is, all the data is stored during the training phase, but the algorithm does not learn on the data until it needs to be classified. 
-       This is good for cases when the distribution of the data is unknown, or in experiments when a quick classification is needed. 
+       This is good for when the distribution of the data is unknown (as is the case for a lot of real-world data), or in experiments when a quick classification is needed. 
        
        The status of KNN as a lazy algorithm also comes with disadvantages. One disadvantage is the calculation complexity. This stems from 
        KNN's retention of all the training data until testing. The algorithm calculates the distance between every sample within the training set
@@ -60,9 +60,15 @@
                                               end of iteration
                                              
        
-       There are a number of improvements that have been proposed and implemented to make KNN more efficient. 
-       One way is to filter out any irrelevant and noisy attributes during distance calculation. This is done via wrapper methods (searching each feature set for a good subset), 
+       There are a number of improvements that have been proposed and implemented to make KNN more efficient:
+       
+       1. One way is to filter out any irrelevant and noisy attributes during distance calculation. This is done via wrapper methods (searching each feature set for a good subset), 
        genetic algorithms (which mimic the process of evolution by natural selection), or by weighting each attribute differently (Jiang et. al.). 
+       
+       2. Another way to improve KNN is to use
+       
+       For our experiment, we intend to use a combination of genetic algorithms and KNN, in what is known as GKNN. This method was shown to give better performance upon a real-world
+       medical dataset. The algorithm should give a similarly good performance upon the educational datasets we will be usign as a case study.
        
        The following is an example of the pseudocode used for the combination of KNN and genetic algortims, from Suguna and Thanushkodi (2010).
        
@@ -80,7 +86,6 @@
               b. Repeat
           4. Output – the chromosome which obtains Gmax has the optimum K-neighbors and the corresponding 
              labels are the classification results.
-       
        
       
       <li>Code</li>
