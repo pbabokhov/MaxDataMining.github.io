@@ -10,6 +10,115 @@
       <li><a href="updates.html">Weekly Updates</a></li>
       <li>Problem Description</li>
       <li>Method Discussion</li>
+       K-Nearest Neighbors, or KNN, is a supervised non-parametric lazy algorithm, first proposed by Evelyn Fix and J.L. Hodges in 1951 
+       The basic premise of KNN is that there is an initial data point/sample, and we want to find a new sample. 
+       In this case, we calculate the k nearest neighbors (with k being a positive number). Thus, if k=1, then the 
+       new point is assigned to the single closest neighbor. If k=2, the sample is assigned to the two closest neighbors, and so on.
+       KNN can be used for both classification and regression. For classification, a new sample is assigned to a class by majority vote,
+       that is, the most frequently-shown class among the sample's k neighbors. For regression, a sample's k nearest neigbors are calculated,
+       and the value is given as an average.
+       
+       The most common measurement for KNN is Euclidean Distance. The math formula is given below:
+       
+                                D(xi, xj) = [(sum from i=1 to k * (xi - xj)^2)]^1/2
+       
+       Where xi and xj are the initially-labeled/input sample and the test sample, respectively, and k is the nearest neighbor to the new sample.
+                                      
+       KNN is non-parametric because there is no assumption about the data fits any sort of parameterized distribution. KNN is a popular algorithm to use 
+       for machine learning because it is simple and because the training time is very quick, due to the method being a lazy algorithm. 
+       That is, all the data is stored during the training phase, but the algorithm does not learn on the data until it needs to be classified. 
+       This is good for when the distribution of the data is unknown (as is the case for a lot of real-world data), or in experiments when a quick classification is needed. 
+       
+       The status of KNN as a lazy algorithm also comes with disadvantages. One disadvantage is the calculation complexity. This stems from 
+       KNN's retention of all the training data until testing. The algorithm calculates the distance between every sample within the training set
+       This means that if there is a lot of data, the calculations of similarity between two training samples will take a long time. 
+       Another disadvantage is that because KNN does not learn on the training set, it is less able to predict upon any newly-introduced data. 
+       In addition, the model would not be able to handle noisy data too well. This is why choosing a large enough value of k is important, 
+       because it will mitigate the effect of noise upon data. This may lead to the model undefitting the data (little similarity between training
+       samples and predicted outcome), if the k is too big. If the k is too small, the result could be an overfit of the data, 
+       meaning that the model cannot learn on any new data introduced. Lastly, all the samples are treated equally. The concept of majority voting results in 
+       the most frequently-found attributes dominating the model at each new iteration. And these attributes would not always be relevant to the problem at hand.
+       
+       The following is a simple flow chart of the classification process by KNN. It is based off Fig. 4 of the paper by Al-Faiz and Miry
+       (http://dx.doi.org/10.5772/48531)
+                                           start of iteration
+                                                    v
+                                                    v
+                                           select and define k 
+                                                    v
+                                                    v
+                         compute the Euclidean distance between the initial and new samples
+                                                    v
+                                                    v
+                                             sort the distances
+                                                    v
+                                                    v
+          -                      select the k nearest neighbors to the new sample
+                                                    v
+                                                    v
+                                       apply the majority vote to all the neighbors
+                                                    v
+                                                    v
+                                              end of iteration
+                                             
+       
+       There are a number of improvements that have been proposed and implemented to make KNN more efficient:
+       
+       1. One way is to filter out any irrelevant and noisy attributes during distance calculation. This is done via wrapper methods (searching each feature set for a good subset), 
+       genetic algorithms (which mimic the process of evolution by natural selection), or by weighting each attribute differently (Jiang <i>et. al.</i>). 
+       
+       2. Another way to improve KNN is to search for the best k value, and this means trying out different k values to find the best one.
+       and using it as the test value (Jiang <i>et. al.</i>). 
+       
+       3. A third way is to weight the vote of a test sample's k neighbors based on their distance from that sample. A similar method makes use of
+       both KNN and Naive Bayes (another lazy algorithm) and makes the weighting within the local space of the test sample. A Naive Bayes is
+       trained after a sample is classifed, using the sample's k nearest neigbors (Jiang <i>et. al.</i>).
+       
+       For our experiment, we intend to use a combination of genetic algorithms and KNN, in what is known as GKNN (Suguna and Thanushkodi, 2010). 
+       This method was shown to give better performance upon a real-world medical dataset. 
+       The algorithm should give a similarly good performance upon the educational datasets we will be using as a case study.
+       The basic premise of genetic algorithms is that they mimic the process of evolution by natural selection. The training samples (genes) 
+       are grouped into strings called chromosomes and the entire collection of strings for the iteration is known as a population. The value
+       from the calculation of distance is known as the fitness value. Reproduction is generating new solutions at the next iteration, from the
+       previous solutions. The populations with the highest fitness are selected. The crossover operation is when two different populations combine
+       to generate child solutions. Mutation is when a position on a chromosome is altered at random (the value is replaced by a number between 0 and 9).
+       
+       
+       The following is an example of the pseudocode used for the combination of KNN and genetic algorithm, from Suguna and Thanushkodi (2010).
+       
+          1. Choose k number of samples from the training set to generate initial population (p1).
+          2. Calculate the distance between training samples in each chromosome and testing samples, as fitness value.
+          3. Choose the chromosome with highest fitness value as global maximum (Gmax).
+              a. For i = 1 to L do
+                  i. Perform reproduction
+                  ii. Apply the crossover operator.
+                  iii. Perform mutation and get the new population. (p2)
+                  iv. Calculate the local maximum (Lmax).
+                  v. If Gmax < Lmax then
+                        a. Gmax = Lmax;
+                        b. p1 = p2;
+              b. Repeat
+          4. Output – the chromosome which obtains Gmax has the optimum K-neighbors and the corresponding 
+             labels are the classification results.
+       
+      
+      
+      <b>References:</b>
+      Al-Faiz, M.Z. and Miry, A.H. "Artificial Human Arm Driven by EMG Signal." Chapter 16.
+      MATLAB - A Fundamental Tool for Scientific Computing and Engineering Applications - Volume 1
+      Edited by Katnikis, V.N. September 26, 2012. DOI: 10.5772/2557
+      
+      Fix, E. and Hodges, J.L. "NONARAMETRIC DISCRMNATION: CONSISTENCY PROPERTIES." USAF School of Aviation 
+      Medicine. Randolph, TX. 1951.
+      
+      Jiang, L. <i>et. al.</i> "Survey of Improving K-Nearest-Neighbor for Classification." 1-5.
+      
+      Suguna N. and Thanushkodi, K. "An Improved k-Nearest Neighbor Classification Using Genetic Algorithm."
+      <i>IJCSI International Journal of Computer Science Issues</i>. 2010, 7(4): 18-21.
+      
+      
+      
+      
       <li>Code</li>
     </ul>
 </html>
