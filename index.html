@@ -71,14 +71,17 @@
        and using it as the test value (Jiang <i>et. al.</i>). 
        
        3. A third way is to weight the vote of a test sample's k neighbors based on their distance from that sample. A similar method makes use of
-       both KNN and Naive Bayes (another lazy algorithm) and makes the weighting within the local space of the (Jiang <i>et. al.</i>).
+       both KNN and Naive Bayes (another lazy algorithm) and makes the weighting within the local space of the test sample. A Naive Bayes is
+       trained after a sample is classifed, using the sample's k nearest neigbors (Jiang <i>et. al.</i>).
        
        For our experiment, we intend to use a combination of genetic algorithms and KNN, in what is known as GKNN (Suguna and Thanushkodi, 2010). 
        This method was shown to give better performance upon a real-world medical dataset. 
        The algorithm should give a similarly good performance upon the educational datasets we will be using as a case study.
        The basic premise of genetic algorithms is that they mimic the process of evolution by natural selection. The training samples (genes) 
        are grouped into strings called chromosomes and the entire collection of strings for the iteration is known as a population. The value
-       from the calculation of distance is known as the fitness value. Reproduction is generating new solutions at the next iteration, by their
+       from the calculation of distance is known as the fitness value. Reproduction is generating new solutions at the next iteration, from the
+       previous solutions. The populations with the highest fitness are selected. The crossover operation is when two different populations combine
+       to generate child solutions. Mutation is when a position on a chromosome is altered at random (the value is replaced by a number between 0 and 9).
        
        
        The following is an example of the pseudocode used for the combination of KNN and genetic algorithm, from Suguna and Thanushkodi (2010).
@@ -104,6 +107,9 @@
       Al-Faiz, M.Z. and Miry, A.H. "Artificial Human Arm Driven by EMG Signal." Chapter 16.
       MATLAB - A Fundamental Tool for Scientific Computing and Engineering Applications - Volume 1
       Edited by Katnikis, V.N. September 26, 2012. DOI: 10.5772/2557
+      
+      Fix, E. and Hodges, J.L. "NONARAMETRIC DISCRMNATION: CONSISTENCY PROPERTIES." USAF School of Aviation 
+      Medicine. Randolph, TX. 1951.
       
       Jiang, L. <i>et. al.</i> "Survey of Improving K-Nearest-Neighbor for Classification." 1-5.
       
