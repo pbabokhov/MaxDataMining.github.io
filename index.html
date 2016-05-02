@@ -10,13 +10,13 @@
       <li><a href="updates.html">Weekly Updates</a></li>
       <li>Problem Description</li>
       <li>Method Discussion</li>
-       K-Nearest Neighbors, or KNN, is a supervised non-parametric lazy algorithm, first proposed by Evelyn Fix and J.L. Hodges in 1951 
-       The basic premise of KNN is that there is an initial data point/sample, and we want to find a new sample. 
-       In this case, we calculate the k nearest neighbors (with k being a positive number). Thus, if k=1, then the 
+       K-Nearest Neighbors, or KNN, is a supervised non-parametric lazy algorithm, first proposed by Evelyn Fix and J.L. Hodges in 1951. 
+       The basic premise of KNN is that there is an initial data point/sample, and we want to predict where a where in the feature space a new sample would be located. 
+       To do this, the nearest neighbors of the new sample are calculated for a value k (with k being a positive number). Thus, if k=1, then the 
        new point is assigned to the single closest neighbor. If k=2, the sample is assigned to the two closest neighbors, and so on.
        KNN can be used for both classification and regression. For classification, a new sample is assigned to a class by majority vote,
-       that is, the most frequently-shown class among the sample's k neighbors. For regression, a sample's k nearest neigbors are calculated,
-       and the value is given as an average.
+       that is, the most frequently-shown class among the sample's k neighbors. For regression, all the k nearest neigbors for a sample 
+       are calculated, and the value is given as an average.
        
        The most common measurement for KNN is Euclidean Distance. The math formula is given below:
        
