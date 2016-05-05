@@ -12,10 +12,6 @@ K-Nearest Neighbors, or KNN, is a supervised non-parametric lazy algorithm, firs
 Where xi and xj are the initially-labeled/input sample and the new sample (referred to as a test sample) respectively,and k is the nearest neighbor to the new sample.</p>
 
 <p>
-KNN is non-parametric because there is no assumption about the data is within any sort of fixed parameter. KNN is a popular algorithm to use for machine learning because it is simple and because the training time is very quick, due to the method being a lazy algorithm. That is, all the data is stored during the training phase, but the algorithm does not learn on the data until it needs to be classified. This is good for when the distribution of the data is unknown (as is the case for a lot of real-world data), or in experiments when a quick classification is needed. The status of KNN as a lazy algorithm also comes with disadvantages. One disadvantage is the calculation complexity. This stems from KNN's retention of all the training data until testing. The algorithm calculates the distance between every sample within the training set. This means that if there is a lot of data, the calculations of similarity between two training samples will take a long time. Another disadvantage is that because KNN does not learn on the training set, it is less able to predict upon any newly-introduced data. In addition, the model would not be able to handle noisy data too well. This is why choosing a large enough value of k is important, because it will mitigate the effect of noise upon data. This may lead to the model undefitting the data (little similarity between training samples and predicted outcome), if the k is too big. If the k is too small, the result could be an overfit of the data, meaning that the model cannot learn on any new data introduced. Lastly, all the samples are treated equally. The concept of majority voting results in the most frequently-found attributes dominating the model at each new iteration. And these attributes are not always be relevant to the problem at hand.
-</p>
-
-<p>
 The following is a simple flow chart of the classification process by KNN. It is based off Fig. 4 of the paper by <a href="http://dx.doi.org/10.5772/48531">Al-Faiz and Miry</a>
 <p align="center">
                                            start of iteration
@@ -32,6 +28,15 @@ The following is a simple flow chart of the classification process by KNN. It is
                                        <br />↓
                                                     <br />end of iteration
 </p>
+
+<p>
+KNN is non-parametric because there is no assumption about the data is within any sort of fixed parameter. KNN is a popular algorithm to use for machine learning because it is simple and because the training time is very quick, due to the method being a lazy algorithm. That is, all the data is stored during the training phase, but the algorithm does not learn on the data until it needs to be classified. This is good for when the distribution of the data is unknown (as is the case for a lot of real-world data), or in experiments when a quick classification is needed.
+</p>
+
+<p>
+The status of KNN as a lazy algorithm also comes with disadvantages. One disadvantage is the calculation complexity. This stems from KNN's retention of all the training data until testing. The algorithm calculates the distance between every sample within the training set. This means that if there is a lot of data, the calculations of similarity between two training samples will take a long time. Another disadvantage is that because KNN does not learn on the training set, it is less able to predict upon any newly-introduced data. In addition, the model would not be able to handle noisy data too well. This is why choosing a large enough value of k is important, because it will mitigate the effect of noise upon data. This may lead to the model undefitting the data (little similarity between training samples and predicted outcome), if the k is too big. If the k is too small, the result could be an overfit of the data, meaning that the model cannot learn on any new data introduced. Lastly, all the samples are treated equally. The concept of majority voting results in the most frequently-found attributes dominating the model at each new iteration. And these attributes are not always be relevant to the problem at hand.
+</p>
+
 <p>
 There are a number of improvements that have been proposed and implemented to make KNN more efficient. Three such examples are show below:
 <ol>
